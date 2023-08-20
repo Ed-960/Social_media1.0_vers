@@ -46,7 +46,7 @@ export const POST = async (request: Request) => {
 
   // Activitate Webhook in the Clerk Dashboard.
   // After adding the endpoint, you'll see the secret on the right side.
-  const wh = new Webhook(process.env.NEXT_CLERK_WEBHOOK_SECRET || '');
+  const wh = new Webhook('whsec_Fy0D93tG1Y4N+CwZ93nEFJclsLsbEd/W');
 
   let evnt: Event | null = null;
 
