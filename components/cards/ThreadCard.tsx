@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { formatDateString } from '@/lib/utils';
+import DeleteThread from '../forms/DeleteThread';
 
 interface Props {
   id: string;
@@ -112,6 +113,14 @@ function ThreadCard({
             </div>
           </div>
         </div>
+
+        <DeleteThread
+          threadId={JSON.stringify(id)}
+          currentUserId={currentUserId}
+          authorId={author.id}
+          parentId={parentId}
+          isComment={isComment}
+        />
       </div>
 
       {!isComment && comments.length > 0 && (
@@ -137,7 +146,7 @@ function ThreadCard({
 
       {!isComment && community && (
         <Link
-          href={`/communities/${community?.id}`}
+          href={`/communities/${community.id}`}
           className='mt-5 flex items-center'
         >
           <p className='text-subtle-medium text-gray-1'>
@@ -146,8 +155,8 @@ function ThreadCard({
           </p>
 
           <Image
-            src={community?.image}
-            alt={community?.name}
+            src={community.image}
+            alt={community.name}
             width={14}
             height={14}
             className='ml-1 rounded-full object-cover'
